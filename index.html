@@ -59,6 +59,7 @@ section{padding:68px 0}
 .about p{color:var(--muted);margin:0 0 14px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .tags span{padding:6px 14px;border-radius:99px;background:var(--glass);border:1px solid var(--line);font-weight:600;font-size:.85rem}
+.tl{position:relative;max-width:760px;margin:0 auto;padding-left:34px}.tl::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--or),rgba(255,87,34,.1))}.ti{position:relative;margin-bottom:20px;padding:20px 22px}.ti::before{content:"";position:absolute;left:-30px;top:24px;width:14px;height:14px;border-radius:50%;background:var(--or);box-shadow:var(--glow)}.ti small{color:var(--or2);font-weight:700;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase}.ti h3{font-size:1.1rem;margin:4px 0 6px}.ti p{margin:0;color:var(--muted);font-size:.95rem}.tlnote{max-width:760px;margin:28px auto 0;text-align:center;font-weight:600}.tlnote span{color:var(--or2)}
 .skills{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
 .pad{padding:26px}
 .sk{margin-bottom:20px}
@@ -107,7 +108,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
 <body>
 <header><div class="wrap bar">
 <a class="logo" href="#home">Abid<b>.</b></a>
-<nav aria-label="Main"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#services">Services</a></nav>
+<nav aria-label="Main"><a href="#home">Home</a><a href="#about">About</a><a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#services">Services</a></nav>
 <a class="btn sm" href="#contact">Contact</a>
 </div></header>
 
@@ -142,6 +143,18 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
 <div class="tags"><span>Botpress</span><span>Make.com</span><span>APIs</span><span>Webhooks</span><span>Supabase</span><span>Lead generation</span><span>Customer support</span></div>
 </div>
 </div>
+</div></section>
+
+<section id="journey"><div class="wrap">
+<div class="head"><h2>My journey</h2><p>From failed projects to a working product.</p><i></i></div>
+<div class="tl">
+<div class="ti g"><small>2024</small><h3>I started building</h3><p>I began learning web development and started building projects.</p></div>
+<div class="ti g"><small>2024 to 2026</small><h3>Projects failed, I kept going</h3><p>I built many projects and most of them did not work out. I made plenty of mistakes, learned from each one, and did not give up.</p></div>
+<div class="ti g"><small>The turning point</small><h3>I started with the problem</h3><p>Instead of building random things, I researched the problems businesses face and how to solve them. Now I start with the problem and choose the tools after.</p></div>
+<div class="ti g"><small>2026</small><h3>I launched LeadSpireAI</h3><p>I launched leadspireai.com, a lead generation product that I designed and built myself.</p></div>
+<div class="ti g"><small>Today</small><h3>Building chatbots and automations</h3><p>I build and test customer support chatbots with Botpress, and use Make.com and Supabase to automate the work behind them.</p></div>
+</div>
+<p class="tlnote">What this means for you: I don’t quit when something breaks, and <span>I start with your problem before I pick the tools.</span></p>
 </div></section>
 
 <section id="skills"><div class="wrap">
@@ -209,9 +222,9 @@ document.getElementById("f").addEventListener("submit",function(ev){
 ev.preventDefault();
 var n=document.getElementById("n").value,e=document.getElementById("e").value,s=document.getElementById("s").value||"Project inquiry",m=document.getElementById("m").value;
 var body="Hi Muhammad,\n\n"+m+"\n\nFrom: "+n+" ("+e+")";
-var KEY="YOUR_ACCESS_KEY";
+var KEY="c22f390e-5784-48b2-b989-b73d6fe6cc4f";
 function fallback(){window.location.href="mailto:abidrazzaq2004@gmail.com?subject="+encodeURIComponent(s)+"&body="+encodeURIComponent(body);}
-if(KEY==="YOUR_ACCESS_KEY"){fallback();return;}
+if(!KEY){fallback();return;}
 var btn=document.querySelector("#f button[type=submit]"),old=btn.textContent;
 btn.disabled=true;btn.textContent="Sending...";
 fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({access_key:KEY,name:n,email:e,subject:s,message:m})})
