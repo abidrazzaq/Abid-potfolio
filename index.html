@@ -61,6 +61,11 @@ section{padding:68px 0}
 .tags span{padding:6px 14px;border-radius:99px;background:var(--glass);border:1px solid var(--line);font-weight:600;font-size:.85rem}
 .tl{position:relative;max-width:760px;margin:0 auto;padding-left:34px}.tl::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--or),rgba(255,87,34,.1))}.ti{position:relative;margin-bottom:20px;padding:20px 22px}.ti::before{content:"";position:absolute;left:-30px;top:24px;width:14px;height:14px;border-radius:50%;background:var(--or);box-shadow:var(--glow)}.ti small{color:var(--or2);font-weight:700;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase}.ti h3{font-size:1.1rem;margin:4px 0 6px}.ti p{margin:0;color:var(--muted);font-size:.95rem}.tlnote{max-width:760px;margin:28px auto 0;text-align:center;font-weight:600}.tlnote span{color:var(--or2)}
 .shots{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}.shot{margin:0;padding:12px;cursor:zoom-in}.shot img{width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--line)}.shot figcaption{padding:12px 6px 4px;color:var(--muted);font-size:.9rem}.shot figcaption b{color:var(--ink);display:block;margin-bottom:2px}.heroimg{box-shadow:0 20px 60px rgba(0,0,0,.45)}.offer{max-width:760px;margin:28px auto 0;text-align:center}.offer h3{font-size:1.15rem;margin-bottom:6px}.offer p{color:var(--muted);margin:0 0 16px}.lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:50;padding:16px;cursor:zoom-out}.lb.on{display:flex}.lb img{max-width:100%;max-height:100%;border-radius:12px}
+.belief{max-width:820px;margin:0 auto;padding:40px 38px 34px;position:relative}.belief::before{content:"\201C";position:absolute;top:-6px;left:24px;font:800 5.5rem/1 Sora,sans-serif;color:var(--or);text-shadow:var(--glow)}.belief p{margin:0;font-size:clamp(1.05rem,2.4vw,1.3rem);line-height:1.75}.motto{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}.motto span{padding:10px 20px;border-radius:99px;font-family:Sora,sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:.92rem;background:rgba(255,87,34,.12);border:1px solid rgba(255,87,34,.4);color:var(--or2)}.motto span:last-child{background:linear-gradient(135deg,var(--or),var(--or2));color:#fff;box-shadow:var(--glow)}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}.js .rv.in{opacity:1;transform:none}.tt{transition:transform .08s linear !important;will-change:transform}
+@keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-2%,2%,0) scale(1.07)}100%{transform:translate3d(2%,-1%,0) scale(1.03)}}body::after{animation:drift 20s ease-in-out infinite alternate}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.avatar{animation:floaty 7s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}body::after,.avatar{animation:none}}
 .skills{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
 .pad{padding:26px}
 .sk{margin-bottom:20px}
@@ -105,6 +110,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
 @media (max-width:760px){.hero,.about,.contact,.skills{grid-template-columns:1fr}.hero{padding-top:36px}.bar{flex-wrap:wrap;padding:10px 20px 4px;row-gap:0}.logo{order:1}.bar>.btn{order:2}nav{order:3;width:100%;margin-left:0}section{padding:48px 0}.pad{padding:20px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fill,.btn,.g,.tech div{transition:none}}
 </style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <header><div class="wrap bar">
@@ -147,6 +153,12 @@ footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:v
 <div class="ti g"><small>Today</small><h3>Building chatbots</h3><p>I build and test customer support and lead capture chatbots with Botpress, and connect them to tools like Supabase.</p></div>
 </div>
 <p class="tlnote">What this means for you: I don’t quit when something breaks, and <span>I start with your problem before I pick the tools.</span></p>
+</div></section>
+
+<section id="belief"><div class="wrap">
+<div class="head"><h2>My belief</h2><i></i></div>
+<blockquote class="belief g" style="margin-top:0;margin-bottom:0"><p>I believe success is not built overnight. Every failure taught me a lesson, every challenge made me stronger, and every setback pushed me to learn more. I don’t believe in shortcuts — I believe in hard work, continuous learning, and the courage to never give up.</p></blockquote>
+<div class="motto"><span>I build.</span><span>I learn.</span><span>I improve.</span><span>I never give up.</span></div>
 </div></section>
 
 <section id="skills"><div class="wrap">
@@ -253,5 +265,30 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
 document.querySelectorAll("[data-zoom] img").forEach(function(t){t.addEventListener("click",function(){im.src=t.src;im.alt=t.alt;lb.classList.add("on")})});
 })();
 </script>
+<script>
+(function(){
+var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var fine=window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+var targets=document.querySelectorAll(".head,.about>*,.ti,.tlnote,.belief,.motto,.skills>*,.tech div,.card,.shot,.offer,.contact>*");
+if(!reduce&&"IntersectionObserver" in window){
+var n=0;
+targets.forEach(function(el){el.classList.add("rv")});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){
+if(x.isIntersecting){var el=x.target;el.style.transitionDelay=((n++%3)*90)+"ms";el.classList.add("in");io.unobserve(el);
+setTimeout(function(){el.classList.remove("rv","in");el.style.transitionDelay=""},1100)}
+})},{threshold:.12});
+targets.forEach(function(el){io.observe(el)});
+}
+if(!reduce&&fine){
+document.querySelectorAll(".card,.shot,.ti,.offer,.belief,.tech div").forEach(function(el){
+el.addEventListener("pointermove",function(e){var r=el.getBoundingClientRect();var px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+el.classList.add("tt");el.style.transform="perspective(900px) rotateX("+(-py*8).toFixed(2)+"deg) rotateY("+(px*10).toFixed(2)+"deg) translateY(-4px)"});
+el.addEventListener("pointerleave",function(){el.classList.remove("tt");el.style.transform=""});
+});
+}
+})();
+</script>
+<script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/11/09/08/20261109085505-JWHQKG73.js" defer></script>
 </body>
 </html>
